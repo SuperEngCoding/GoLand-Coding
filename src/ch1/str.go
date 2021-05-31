@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"unicode/utf8"
+)
 
 //字符串是一种值类型，且值不可变，即创建某个文本后将无法再次修改这个文本的内容，
 //更深入地讲，字符串是字节的定长数组。
@@ -25,7 +28,21 @@ func main() {
     /n`
 	fmt.Println(name)
 
-	// 计算字符串长度 len()
-	fmt.Println(len(name)) //38
+	// ASCII 字符串长度使用 len() 函数。
+	// Unicode 字符串长度使用 utf8.RuneCountInString() 函数。
+	// 计算字符串长度 len() 函数的返回值的类型为 int，表示字符串的 ASCII 字符个数或字节长度。
+	str1 := "abcd efg"
+	str2 := "中国"
+	fmt.Println(len(str1)) //8
+	// 中国为什么是6呢而不是2呢
+	//这里的差异是由于 Go 语言的字符串都以 UTF-8 格式保存，
+	//每个中文占用 3 个字节，因此使用 len() 获得两个中文文字对应的 6 个字节。
+	fmt.Println(len(str2)) //6
+	str3 := "中国，niubi"
+	//UTF-8 包提供的 RuneCountInString() 函数，统计 Uncode 字符数量。
+	fmt.Println(utf8.RuneCountInString(str2)) //2
+	fmt.Println(utf8.RuneCountInString(str3)) //8
+
+	// 字符串遍历
 
 }
