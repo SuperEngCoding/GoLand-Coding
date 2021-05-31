@@ -1,2 +1,4 @@
 # GoLand-Coding
 GoLand
+
+## Init
