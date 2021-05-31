@@ -8,7 +8,8 @@ import (
 // Go语言的变量声明 var 变量名  变量类型
 
 func main() {
-	/**变量的声明*/
+	/*  一  变量的声明   */
+
 	//01 标准格式: var name type
 	var age int
 	//02 批量格式
@@ -21,7 +22,8 @@ func main() {
 	d := 1
 	i, j := 0, 1
 
-	/** 变量的初始化 */
+	/*   二  变量的初始化   */
+
 	//01 标准格式 var 变量名 类型 = 表达式
 	var name string = "小明" // 这里从idea提示中可以看出string是可以除去的
 	//02 编译器推导类型的格式
@@ -31,6 +33,9 @@ func main() {
 	//address := "阜阳" 这里会编译不通过
 	// 短变量声明并初始化 多个  从func Dial(network, address string) (Conn, error) 方法可知返回值两个
 	conn, err := net.Dial("tcp", "127.0.0.1:8080")
+
+	/*   二  多个变量同时赋值   */
+	c2, d2 := exchange02(1, 2)
 
 	fmt.Println(age)
 	fmt.Println(a)
@@ -46,4 +51,23 @@ func main() {
 	fmt.Println(conn)
 	fmt.Println(err)
 
+	fmt.Println(c2)
+	fmt.Println(d2)
+
+}
+
+/* 两个变量互换值 */
+// 比较传统的方式 需要一个中间变量进行转换
+func exchange01(a int, b int) (c int, d int) {
+	var f int
+	f = a
+	a = b
+	b = f
+	return a, b
+}
+
+// Go直接可以进行两个值的互相 而不需要借助于中间变量转换
+func exchange02(a int, b int) (c int, d int) {
+	b, a = a, b
+	return a, b
 }
