@@ -43,6 +43,17 @@ func main() {
 	fmt.Println(utf8.RuneCountInString(str2)) //2
 	fmt.Println(utf8.RuneCountInString(str3)) //8
 
-	// 字符串遍历
+	// 字符串遍历 有二种遍历方法
+	// 01 遍历每个ASCII字符  - ASCII 字符串遍历直接使用下标。
+	//如果出现中文就会出现乱码
+	str4 := "中国,China"
+	for i := 0; i < len(str4); i++ {
+		fmt.Printf("ascii: %c %d\n", str4[i], str4[i])
+	}
+
+	// 按Unicode字符遍历字符串 - Unicode 字符串遍历用 for range 出现中文也不会乱码
+	for _, s := range str4 {
+		fmt.Printf("unicode: %c %d\n", s, s)
+	}
 
 }
