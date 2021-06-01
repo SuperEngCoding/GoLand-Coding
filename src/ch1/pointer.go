@@ -25,5 +25,6 @@ func main() {
 	fmt.Printf("value  %s\n", value)
 
 	// 使用指针修改值
+	//
 
 }
