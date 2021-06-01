@@ -1,10 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"flag"
+	"fmt"
+)
 
 // Go语言指针 - 两个核心的概念
 // 类型指针: 允许对这个指针类型的数据进行修改，传递数据可以直接使用指针，而无须拷贝数据，类型指针不能进行偏移和运算。
 // 切片: 由指向起始元素的原始指针,元素数量和容量组成。
+// 定义命令行参数
+var mode = flag.String("mode", "", "process mode")
 
 func main() {
 	// 指针地址和指针类型
@@ -29,6 +34,18 @@ func main() {
 	x, y := 1, 2
 	swap(&x, &y)
 	fmt.Println(x, y)
+
+	//使用指针变量获取命令行的输入信息
+
+	// 解析命令行参数
+	flag.Parse()
+	// 输出命令行参数
+	fmt.Println(*mode)
+
+	//创建指针的另一种方法——new() 函数
+	str5 := new(string)
+	*str5 = "Go语言教程"
+	fmt.Println(*str5)
 
 }
 
