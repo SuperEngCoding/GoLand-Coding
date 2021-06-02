@@ -43,7 +43,7 @@ func main() {
 	// 将枚举值转换为字符串
 
 	// 输出CPU的值并以整型格式显示
-	fmt.Printf("%s %d", CPU, CPU)
+	fmt.Printf("%s %d", CPU, CPU) //CPU 1
 }
 
 func (c ChipType) String() string {
