@@ -19,4 +19,23 @@ func main() {
 	var nil = errors.New("my god")
 	fmt.Println(nil)
 
+	// 03  nil没有默认类型
+	fmt.Printf("%T \n", nil) //  *errors.errorString
+
+	// 04  不同类型的nil指针是一样的
+	var arr []int
+	var num *int
+	fmt.Printf("%p\n", arr) // 0x0
+	fmt.Printf("%p", num)   // 0x0
+
+	// 不同类型的nil是不能比较的
+	//var m map[int]string
+	//var ptr *int
+	//fmt.Printf(m == ptr)
+	/* 需要注意的点 */
+	// nil 是 map、slice、pointer、channel、func、interface 的零值
+	// 不同类型的 nil 值占用的内存大小可能是不一样的
+	// 两个相同类型的 nil 值也可能无法比较
+	// 不同类型的 nil 值占用的内存大小可能是不一样的
+
 }
